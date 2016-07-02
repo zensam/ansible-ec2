@@ -34,7 +34,6 @@
              groups=tag_Type_{{ec2_tag_Type}},tag_Environment_{{ec2_tag_Environment}}
              ec2_region={{ec2_region}}
              ec2_tag_Name={{ec2_tag_Name}}
-             # ec2_tag_Name={{ec2_tag_Name}}-{{sn}}
              ec2_tag_Type={{ec2_tag_Type}}
              ec2_tag_Environment={{ec2_tag_Environment}}
              ec2_ip_address={{item.public_ip}}
