@@ -1,0 +1,13 @@
+ec2_count: 1
+ec2_node_number: 3
+ec2_keypair: "samkey"
+ec2_security_group: "sg-799c481d"
+ec2_instance_type: "t1.micro"
+ec2_image: "ami-a3039ed0"
+ec2_subnet_ids: ['subnet-56de5833','subnet-1e14d447','subnet-d8d47baf']
+ec2_region: "eu-west-1"
+ec2_tag_Name: "sam-node"
+ec2_tag_Type: "testnode"
+ec2_tag_Environment: "testenv"
+ec2_root_disk_size: 16
+ec2_swap_size: 4
