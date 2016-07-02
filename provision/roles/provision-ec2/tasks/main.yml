@@ -33,7 +33,7 @@
  - add_host: name={{ item.public_ip }} >
              groups=tag_Type_{{ec2_tag_Type}},tag_Environment_{{ec2_tag_Environment}}
              ec2_region={{ec2_region}}
-             ec2_tag_Name={{ec2_tag_Name}}
+             ec2_tag_Name={{ec2_tag_Name}}-{{ami_launch_index}}
              ec2_tag_Type={{ec2_tag_Type}}
              ec2_tag_Environment={{ec2_tag_Environment}}
              ec2_ip_address={{item.public_ip}}
