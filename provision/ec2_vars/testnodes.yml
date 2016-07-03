@@ -1,5 +1,5 @@
 ec2_count: 1
-ec2_node_number: 2
+ec2_node_number: 3
 ec2_keypair: "samkey"
 ec2_security_group: "sg-799c481d"
 ec2_instance_type: "t1.micro"
