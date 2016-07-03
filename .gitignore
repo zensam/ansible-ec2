@@ -1,5 +1,6 @@
 .vagrant
 tmp/
+*.retry
 *.tmp
 *.old
 *.bak
