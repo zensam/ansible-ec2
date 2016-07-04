@@ -81,12 +81,13 @@
      region: '{{aws_region}}'
      key_name: '{{ec2_keypair}}'
      group_id: '{{sg.group_id}}'
-     # group: '{{aws_prefix}}_sg'
+     #group: '{{aws_prefix}}_sg'
      instance_type: '{{ec2_instance_type}}'
      image: '{{ec2_image}}'
-    #  vpc_subnet_id: '{{ec2_subnet_ids|random}}'
+     #vpc_subnet_id: '{{ec2_subnet_ids|random}}'
+     vpc_subnet_id: '{{vpc.subnets.id}}'
      # assign_public_ip only available with vpc_subnet_id
-    #  assign_public_ip: yes
+     assign_public_ip: yes
      wait: yes
     #  count: "{{ ec2_node_number }}"
     #  instance_tags:
