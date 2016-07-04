@@ -34,6 +34,12 @@
                    >> '{{aws_prefix}}'_vpc_info
    with_items: '{{vpc.subnets}}'
 
+ - name: write registered variables to {{aws_prefix}}_vpc_info file
+   become: true
+   local_action: shell echo "{{vpc.region}}"":" "{{item.id}}"
+                   >> '{{aws_prefix}}'_vpc_info
+   with_items: '{{vpc.subnets}}'
+
  - name: SG provision
    local_action:
      module: ec2_group
@@ -83,8 +89,8 @@
      #group: '{{aws_prefix}}_sg'
      instance_type: '{{ec2_instance_type}}'
      image: '{{ec2_image}}'
-    #  vpc_subnet_id: '{{ec2_subnet_ids|random}}'
-    #  vpc_subnet_id: '{{vpc.subnets.id}}'
+     #vpc_subnet_id: '{{ec2_subnet_ids|random}}'
+     vpc_subnet_id: '{{subnet.id}}'
      region: '{{aws_region}}'
      instance_tags: '{"Name":"{{ec2_tag_Name}}","Type":"{{ec2_tag_Type}}","Environment":"{{ec2_tag_Environment}}"}'
     #  instance_tags: '{"Name":"{{ec2_tag_Name}}-{{item}}","Type":"{{ec2_tag_Type}}","Environment":"{{ec2_tag_Environment}}"}'
