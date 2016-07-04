@@ -84,7 +84,7 @@
      instance_type: '{{ec2_instance_type}}'
      image: '{{ec2_image}}'
      #vpc_subnet_id: '{{ec2_subnet_ids|random}}'
-     vpc_subnet_id: "'{{aws_prefix}}'_net_1"
+     vpc_subnet_id: '{{ hdp24_net_1 }}'
      region: '{{aws_region}}'
      instance_tags: '{"Name":"{{ec2_tag_Name}}","Type":"{{ec2_tag_Type}}","Environment":"{{ec2_tag_Environment}}"}'
     #  instance_tags: '{"Name":"{{ec2_tag_Name}}-{{item}}","Type":"{{ec2_tag_Type}}","Environment":"{{ec2_tag_Environment}}"}'
