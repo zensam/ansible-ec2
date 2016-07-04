@@ -18,5 +18,3 @@ ec2_tag_Type: "hdpnodes"
 ec2_tag_Environment: "hdpenv"
 ec2_root_disk_size: 22
 ec2_swap_size: 4
-vars_files:
-   - "'{{ aws_prefix }}'_vpc_info"
