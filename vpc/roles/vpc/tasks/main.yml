@@ -75,7 +75,7 @@
   #                   >> '{{aws_prefix}}'_vpc_info
   #   with_items: '{{vpc.rules}}'
 
- - include_vars: "'{{aws_prefix}}'_vpc_info" 
+ - include_vars: "{{aws_prefix}}_vpc_info" 
 
  - name: Provision nodes for HDP cluster in dedicated VPC
 
