@@ -75,17 +75,18 @@
   #                   >> '{{aws_prefix}}'_vpc_info
   #   with_items: '{{vpc.rules}}'
 
- - name: Provision 1 master and 3 nodes in the new VPC
+ - name: Provision nodes for HDP cluster in dedicated VPC
    local_action:
      module: ec2
      region: '{{aws_region}}'
      key_name: '{{ec2_keypair}}'
-    #  group_id: '{{ec2_security_group}}'
+     # group_id: '{{ec2_security_group}}'
      group: '{{aws_prefix}}_sg'
      instance_type: '{{ec2_instance_type}}'
      image: '{{ec2_image}}'
-    #  vpc_subnet_id: '{{ec2_subnet_ids|random}}'
-     assign_public_ip: yes
+     #vpc_subnet_id: '{{ec2_subnet_ids|random}}'
+     # assign_public_ip only available with vpc_subnet_id
+     #assign_public_ip: yes
      wait: yes
     #  count: "{{ ec2_node_number }}"
     #  instance_tags:

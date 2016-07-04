@@ -13,7 +13,6 @@ ec2_node_number: 4
 ec2_keypair: "samkey"
 ec2_instance_type: "t1.micro"
 ec2_image: "ami-a3039ed0"
-ec2_subnet_ids: ['subnet-56de5833','subnet-1e14d447','subnet-d8d47baf']
 ec2_tag_Name: "samnode"
 ec2_tag_Type: "hdpnodes"
 ec2_tag_Environment: "hdpenv"
