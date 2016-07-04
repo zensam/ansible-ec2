@@ -2,13 +2,13 @@
  - name: VPC+SG+SUBNETS+Instances provision
    local_action:
      module: ec2_vpc
-     region: '{{ aws_region }}'
+     region: '{{aws_region}}'
      cidr_block: '{{aws_vpc}}'
-     resource_tags: '{"Name":"{{ aws_prefix }}_vpc"}'
+     resource_tags: '{"Name":"{{aws_prefix}}_vpc"}'
      subnets:
        - cidr: '{{aws_subnet}}'
         #  az: "{{ aws_az0 }}"
-         resource_tags: '{"Name":"{{ aws_prefix }}_net_1a"}'
+         resource_tags: '{"Name":"{{aws_prefix}}_net_1a"}'
       #  - cidr: 10.0.2.64/26
       #    az: "{{ aws_az1 }}"
       #    resource_tags: '{"Name":"{{ aws_prefix }}_net_1b"}'
@@ -23,17 +23,18 @@
            - dest: 0.0.0.0/0
              gw: igw
    register: vpc
- - name: write vpc id to {{ aws_prefix }}_vpc_info file
+ - name: write vpc id to '{{aws_prefix}}'_vpc_info file
   #  sudo: yes
    become: true
-   local_action: shell echo "'{{ aws_prefix }}'"_vpc":" "'{{ vpc.vpc_id }}'"
-                   > '{{ aws_prefix }}'_vpc_info
- - name: write subnets id to {{ aws_prefix }}_vpc_info file
+   local_action: shell echo "'{{aws_prefix}}'"_vpc":" "'{{vpc.vpc_id}}'"
+                   > '{{aws_prefix}}'_vpc_info
+ - name: write subnets id to '{{aws_prefix}}'_vpc_info file
   #  sudo: yes
    become: true
-   local_action: shell echo "'{{ item.resource_tags.Name }}'"":" "'{{ item.id }}'"
-                   >> '{{ aws_prefix }}'_vpc_info
-   with_items: vpc.subnets
+   local_action: shell echo "'{{item.resource_tags.Name}}'"":" "'{{item.id}}'"
+                   >> '{{aws_prefix}}'_vpc_info
+   with_items: '{{vpc.subnets}}'
+
  #     key_name: "{{ ec2_keypair }}"
  #     group_id: "{{ ec2_security_group }}"
  #     instance_type: "{{ ec2_instance_type }}"
