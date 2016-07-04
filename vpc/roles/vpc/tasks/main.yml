@@ -25,11 +25,11 @@
    register: vpc
  - name: write vpc id to {{ aws_prefix }}_vpc_info file
    sudo: yes
-   local_action: shell echo '{{ aws_prefix }}'_vpc":" '{{ vpc.vpc_id }}'
+   local_action: shell echo "{{ aws_prefix }}"_vpc":" "{{ vpc.vpc_id }}"
                    > '{{ aws_prefix }}'_vpc_info
  - name: write subnets id to {{ aws_prefix }}_vpc_info file
    sudo: yes
-   local_action: shell echo '{{ item.resource_tags.Name }}''":" '{{ item.id }}'
+   local_action: shell echo "{{ item.resource_tags.Name }}"":" "{{ item.id }}"
                    >> '{{ aws_prefix }}'_vpc_info
    with_items: vpc.subnets
  #     key_name: "{{ ec2_keypair }}"
