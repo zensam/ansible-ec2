@@ -29,7 +29,6 @@
    local_action: shell echo "{{aws_prefix}}"_vpc":" "{{vpc.vpc_id}}"
                    > '{{aws_prefix}}'_vpc_info
  - name: write subnets id to {{aws_prefix}}_vpc_info file
-  #  sudo: yes
    become: true
    local_action: shell echo "{{item.resource_tags.Name}}"":" "{{item.id}}"
                    >> '{{aws_prefix}}'_vpc_info
@@ -73,7 +72,6 @@
          cidr_ip: 0.0.0.0/0
 
   - name: write rules to {{aws_prefix}}_vpc_info file
-    #  sudo: yes
     become: true
     local_action: shell echo "{{item.resource_tags.Name}}"":" "{{item.id}}"
                     >> '{{aws_prefix}}'_vpc_info
