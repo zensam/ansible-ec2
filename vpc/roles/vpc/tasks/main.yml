@@ -35,49 +35,49 @@
                    >> '{{aws_prefix}}'_vpc_info
    with_items: '{{vpc.subnets}}'
 
-- name: SG provision
-  local_action:
-    module: ec2_group
-    region: '{{aws_region}}'
-    vpc_id: '{{vpc.vpc_id}}'
-    # your security group name
-    name: "'{{aws_prefix}}'_sg_web"
-    description: security group for HDP cluster
-    rules:
-      # Allow to ping hosts
-      - proto: icmp
-        # from_port: 8 # icmp type, -1 = any type
-        from_port: -1
-        to_port:  -1
-        cidr_ip: 0.0.0.0/0
-        group_id: '{{name}}'
-      # Allow ssh access from anywhere
-      - proto: tcp
-        from_port: 22
-        to_port: 22
-        cidr_ip: 0.0.0.0/0
-        group_id: '{{name}}'
-      # Allow some access for test from anywhere
-      - proto: tcp
-        from_port: any
-        to_port: 2222
-        cidr_ip: 0.0.0.0/0
-        # group_id: '{{name}}'
-      # Allow http access from anywhere
-      # - proto: tcp
-      #   from_port: 80
-      #   to_port: 80
-      #   cidr_ip: 0.0.0.0/0
-    rules_egress:
-      - proto: all
-        cidr_ip: 0.0.0.0/0
+ - name: SG provision
+   local_action:
+     module: ec2_group
+     region: '{{aws_region}}'
+     vpc_id: '{{vpc.vpc_id}}'
+     # your security group name
+     name: "'{{aws_prefix}}'_sg_web"
+     description: security group for HDP cluster
+     rules:
+       # Allow to ping hosts
+       - proto: icmp
+         # from_port: 8 # icmp type, -1 = any type
+         from_port: -1
+         to_port:  -1
+         cidr_ip: 0.0.0.0/0
+         group_id: '{{name}}'
+       # Allow ssh access from anywhere
+       - proto: tcp
+         from_port: 22
+         to_port: 22
+         cidr_ip: 0.0.0.0/0
+         group_id: '{{name}}'
+       # Allow some access for test from anywhere
+       - proto: tcp
+         from_port: any
+         to_port: 2222
+         cidr_ip: 0.0.0.0/0
+         # group_id: '{{name}}'
+       # Allow http access from anywhere
+       # - proto: tcp
+       #   from_port: 80
+       #   to_port: 80
+       #   cidr_ip: 0.0.0.0/0
+     rules_egress:
+       - proto: all
+         cidr_ip: 0.0.0.0/0
 
- - name: write rules to {{aws_prefix}}_vpc_info file
-  #  sudo: yes
-   become: true
-   local_action: shell echo "{{item.resource_tags.Name}}"":" "{{item.id}}"
-                   >> '{{aws_prefix}}'_vpc_info
-   with_items: '{{vpc.rules}}'
+  - name: write rules to {{aws_prefix}}_vpc_info file
+    #  sudo: yes
+    become: true
+    local_action: shell echo "{{item.resource_tags.Name}}"":" "{{item.id}}"
+                    >> '{{aws_prefix}}'_vpc_info
+    with_items: '{{vpc.rules}}'
  #     key_name: "{{ ec2_keypair }}"
  #     group_id: "{{ ec2_security_group }}"
  #     instance_type: "{{ ec2_instance_type }}"
