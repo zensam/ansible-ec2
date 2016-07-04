@@ -71,11 +71,11 @@
        - proto: all
          cidr_ip: 0.0.0.0/0
 
-  - name: write rules to {{aws_prefix}}_vpc_info file
-    become: true
-    local_action: shell echo "{{item.resource_tags.Name}}"":" "{{item.id}}"
-                    >> '{{aws_prefix}}'_vpc_info
-    with_items: '{{vpc.rules}}'
+  # - name: write rules to {{aws_prefix}}_vpc_info file
+  #   become: true
+  #   local_action: shell echo "{{item.resource_tags.Name}}"":" "{{item.id}}"
+  #                   >> '{{aws_prefix}}'_vpc_info
+  #   with_items: '{{vpc.rules}}'
  #     key_name: "{{ ec2_keypair }}"
  #     group_id: "{{ ec2_security_group }}"
  #     instance_type: "{{ ec2_instance_type }}"
