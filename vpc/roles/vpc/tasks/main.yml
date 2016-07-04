@@ -8,7 +8,7 @@
      subnets:
        - cidr: '{{aws_subnet}}'
         #  az: "{{ aws_az0 }}"
-         resource_tags: '{"Name":"'{{ aws_prefix }}'_net_1a"}'
+         resource_tags: '{"Name":"{{ aws_prefix }}_net_1a"}'
       #  - cidr: 10.0.2.64/26
       #    az: "{{ aws_az1 }}"
       #    resource_tags: '{"Name":"{{ aws_prefix }}_net_1b"}'
