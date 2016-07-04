@@ -76,8 +76,6 @@
   #   with_items: '{{vpc.rules}}'
 
  - name: Provision nodes for HDP cluster in dedicated VPC
-   vars_files:
-   - "{{ aws_prefix }}_vpc_info"
    local_action:
      module: ec2
      key_name: '{{ec2_keypair}}'
