@@ -4,7 +4,7 @@
      module: ec2_vpc
      region: '{{ aws_region }}'
      cidr_block: '{{aws_vpc}}'
-     resource_tags: '{"Name":"'{{ aws_prefix }}'_vpc"}'
+     resource_tags: '{"Name":"{{ aws_prefix }}_vpc"}'
      subnets:
        - cidr: '{{aws_subnet}}'
         #  az: "{{ aws_az0 }}"
