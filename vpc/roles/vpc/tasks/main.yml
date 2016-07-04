@@ -23,15 +23,17 @@
            - dest: 0.0.0.0/0
              gw: igw
    register: vpc
- - name: write vpc id to {{ aws_prefix }}_vpc_info file
-   sudo: yes
-   local_action: shell echo "{{ aws_prefix }}"_vpc":" "{{ vpc.vpc_id }}"
-                   > '{{ aws_prefix }}'_vpc_info
- - name: write subnets id to {{ aws_prefix }}_vpc_info file
-   sudo: yes
-   local_action: shell echo "{{ item.resource_tags.Name }}"":" "{{ item.id }}"
-                   >> '{{ aws_prefix }}'_vpc_info
-   with_items: vpc.subnets
+ # - name: write vpc id to {{ aws_prefix }}_vpc_info file
+ #  #  sudo: yes
+ #   become: true
+ #   local_action: shell echo "{{ aws_prefix }}"_vpc":" "{{ vpc.vpc_id }}"
+ #                   > '{{ aws_prefix }}'_vpc_info
+ # - name: write subnets id to {{ aws_prefix }}_vpc_info file
+ #  #  sudo: yes
+ #   become: true
+ #   local_action: shell echo "{{ item.resource_tags.Name }}"":" "{{ item.id }}"
+ #                   >> '{{ aws_prefix }}'_vpc_info
+ #   with_items: vpc.subnets
  #     key_name: "{{ ec2_keypair }}"
  #     group_id: "{{ ec2_security_group }}"
  #     instance_type: "{{ ec2_instance_type }}"
