@@ -9,3 +9,10 @@ sudo wget https://github.com/ansible/ansible/blob/stable-2.1/contrib/inventory/e
 sudo wget https://github.com/ansible/ansible/blob/stable-2.1/contrib/inventory/ec2.ini
 sudo chmod +x ec2.py
 ```
+
+```bash
+cd /etc/ansible
+sudo wget https://raw.githubusercontent.com/yankurniawan/ansible-for-aws/master/ec2.py
+sudo wget https://raw.githubusercontent.com/yankurniawan/ansible-for-aws/master/ec2.ini
+sudo chmod +x ec2.py
+```
