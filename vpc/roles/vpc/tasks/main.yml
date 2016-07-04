@@ -68,7 +68,7 @@
      rules_egress:
        - proto: all
          cidr_ip: 0.0.0.0/0
-
+   register: sg
   # - name: write rules to {{aws_prefix}}_vpc_info file
   #   become: true
   #   local_action: shell echo "{{item.resource_tags.Name}}"":" "{{item.id}}"
@@ -80,13 +80,13 @@
      module: ec2
      region: '{{aws_region}}'
      key_name: '{{ec2_keypair}}'
-     # group_id: '{{ec2_security_group}}'
-     group: '{{aws_prefix}}_sg'
+     group_id: '{{sg.group_id}}'
+     # group: '{{aws_prefix}}_sg'
      instance_type: '{{ec2_instance_type}}'
      image: '{{ec2_image}}'
-     #vpc_subnet_id: '{{ec2_subnet_ids|random}}'
+    #  vpc_subnet_id: '{{ec2_subnet_ids|random}}'
      # assign_public_ip only available with vpc_subnet_id
-     #assign_public_ip: yes
+    #  assign_public_ip: yes
      wait: yes
     #  count: "{{ ec2_node_number }}"
     #  instance_tags:
