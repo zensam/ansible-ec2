@@ -2,13 +2,13 @@ aws_region: 'eu-west-1'
 #  prefix for naming
 aws_prefix: "hdp24"
 #  availability zones
-aws_az0: "{{ aws_region }}a"
-aws_az1: "{{ aws_region }}b"
-aws_az2: "{{ aws_region }}c"
+aws_az0: '{{aws_region }}a'
+aws_az1: '{{ aws_region }}b'
+aws_az2: '{{ aws_region }}c'
 # Default cidr block for vpc
 aws_vpc: "10.0.0.0/16"
 # subnets
-aws_subnet: '10.0.1.0/24'
+aws_subnet: "10.0.1.0/24"
 ec2_node_number: 4
 ec2_keypair: "samkey"
 ec2_security_group: "sg-799c481d"
