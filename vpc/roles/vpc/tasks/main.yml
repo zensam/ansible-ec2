@@ -49,13 +49,13 @@
          from_port: -1
          to_port:  -1
          cidr_ip: 0.0.0.0/0
-         group_id: '{{name}}'
+        #  group_id: '{{name}}'
        # Allow ssh access from anywhere
        - proto: tcp
          from_port: 22
          to_port: 22
          cidr_ip: 0.0.0.0/0
-         group_id: '{{name}}'
+        #  group_id: '{{name}}'
        # Allow some access for test from anywhere
        - proto: tcp
          from_port: any
