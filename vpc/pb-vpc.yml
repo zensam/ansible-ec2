@@ -4,6 +4,9 @@
    gather_facts: false
    user: root
    pre_tasks:
-    - include_vars: ec2_vars/{{type}}.yml
+    # For "ansible-playbook -vv -i localhost, -e "type=all" pb-vpc.yml"
+    # command usage:
+    # - include_vars: ec2_vars/{{type}}.yml
+    - include_vars: ec2_vars/all.yml
    roles:
-    - provision-ec2
+    - vpc
