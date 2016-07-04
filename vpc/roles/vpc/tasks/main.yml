@@ -40,7 +40,7 @@
      region: '{{aws_region}}'
      vpc_id: '{{vpc.vpc_id}}'
      # your security group name
-    #  name: "'{{aws_prefix}}'_sg"
+     name: "{{aws_prefix}}_sg"
      description: security group for HDP cluster
      rules:
        # Allow to ping hosts
