@@ -73,7 +73,6 @@
  - include_vars: "{{aws_vars_file}}"
 
  - name: Data Nodes Provision
-
    local_action:
      module: ec2
      key_name: '{{ec2_keypair}}'
@@ -109,10 +108,8 @@
      module: ec2
      key_name: '{{ec2_keypair}}'
      group_id: '{{sg.group_id}}'
-     #group: '{{aws_prefix}}_sg'
      instance_type: '{{ec2_nn_instance_type}}'
      image: '{{ec2_image}}'
-     #vpc_subnet_id: '{{ec2_subnet_ids|random}}'
      vpc_subnet_id: '{{hdp24_net_1}}'
      region: '{{aws_region}}'
      instance_tags: '{"Name":"{{ec2_tag_nn_Name}}-{{item}}","Type":"{{ec2_tag_Type}}","Environment":"{{ec2_tag_Environment}}"}'
@@ -130,15 +127,13 @@
        delete_on_termination: true
    with_sequence: count='{{ec2_nn_number}}'
 
- - name: Provision Secondary Name Nodes
+ - name: Secondary Name Nodes Provision
    local_action:
      module: ec2
      key_name: '{{ec2_keypair}}'
      group_id: '{{sg.group_id}}'
-     #group: '{{aws_prefix}}_sg'
      instance_type: '{{ec2_sn_instance_type}}'
      image: '{{ec2_image}}'
-     #vpc_subnet_id: '{{ec2_subnet_ids|random}}'
      vpc_subnet_id: '{{hdp24_net_1}}'
      region: '{{aws_region}}'
      instance_tags: '{"Name":"{{ec2_tag_sn_Name}}-{{item}}","Type":"{{ec2_tag_Type}}","Environment":"{{ec2_tag_Environment}}"}'
