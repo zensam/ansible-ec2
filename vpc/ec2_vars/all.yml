@@ -9,7 +9,7 @@ aws_az2: '{{ aws_region }}c'
 aws_vpc: "10.0.0.0/16"
 # subnets
 aws_subnet: "10.0.1.0/24"
-ec2_node_number: 4
+ec2_node_number: 2
 ec2_keypair: "samkey"
 # ec2_instance_type: "t1.micro"
 ec2_instance_type: "m3.medium"
