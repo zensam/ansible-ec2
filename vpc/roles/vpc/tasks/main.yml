@@ -25,11 +25,11 @@
    register: vpc
  - name: write vpc id to {{aws_vars_file}} file
   #  sudo: yes
-   become: true
+  #  become: true
    local_action: shell echo "{{aws_prefix}}"_vpc":" "{{vpc.vpc_id}}"
                    > '{{aws_vars_file}}'
  - name: write subnets id to {{aws_vars_file}} file
-   become: true
+   # become: true
    local_action: shell echo "{{item.resource_tags.Name}}"":" "{{item.id}}"
                    >> '{{aws_vars_file}}'
    with_items: '{{vpc.subnets}}'
