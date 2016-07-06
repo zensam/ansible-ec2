@@ -2,7 +2,7 @@ aws_region: 'eu-west-1'
 #  prefix for naming
 aws_prefix: "hdp24"
 # aws_vars_file: '{{aws_prefix}}_info'
-aws_vars_file: '{{aws_prefix}}_info'
+aws_vars_file: '/tmp/{{aws_prefix}}_info'
 #  availability zones
 aws_az0: '{{ aws_region }}a'
 aws_az1: '{{ aws_region }}b'
