@@ -73,7 +73,6 @@
 
  - name: write sg id to '{{aws_vars_file}}' file
    local_action: shell echo "{{aws_prefix}}"_sg":" "{{sg.group_id}}"
-  #  local_action: shell echo "SGname"":" "{{sg.group_id}}"
                    >> '{{aws_vars_file}}'
 
  - include_vars: "{{aws_vars_file}}"
