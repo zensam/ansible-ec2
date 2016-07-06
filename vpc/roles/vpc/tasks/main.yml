@@ -23,11 +23,12 @@
            - dest: 0.0.0.0/0
              gw: igw
    register: vpc
+
  - name: write vpc id to {{aws_vars_file}} file
-  #  sudo: yes
   #  become: true
    local_action: shell echo "{{aws_prefix}}"_vpc":" "{{vpc.vpc_id}}"
                    > '{{aws_vars_file}}'
+
  - name: write subnets id to {{aws_vars_file}} file
    # become: true
    local_action: shell echo "{{item.resource_tags.Name}}"":" "{{item.id}}"
@@ -70,6 +71,16 @@
          cidr_ip: 0.0.0.0/0
    register: sg
 
+ - name: write sg id to {{aws_vars_file}} file
+  #  local_action: shell echo "{{aws_prefix}}"_sg":" "{{sg.group_id}}"
+   local_action: shell echo "sg.name":" "{{sg.group_id}}"
+                   >> '{{aws_vars_file}}'
+
+ - name: write output rules protocols to {{aws_vars_file}} file
+   local_action: shell echo "{{item.proto}}"":" "{{item.id}}"
+                   >> '{{aws_vars_file}}'
+   with_items: '{{sg.rules}}'
+   
  - include_vars: "{{aws_vars_file}}"
 
  - name: Data Nodes Provision
