@@ -76,11 +76,6 @@
    local_action: shell echo "SGname"":" "{{sg.group_id}}"
                    >> '{{aws_vars_file}}'
 
- - name: write output rules protocols to {{aws_vars_file}} file
-   local_action: shell echo "{{item.proto}}"":" "{{item.id}}"
-                   >> '{{aws_vars_file}}'
-   with_items: '{{sg.rules}}'
-
  - include_vars: "{{aws_vars_file}}"
 
  - name: Data Nodes Provision
